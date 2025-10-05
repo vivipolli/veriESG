@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { verifyClaim } from "@/services/verifierService";
+import { verifyClaimMock } from "@/services/verifierServiceMock";
 
 type VerificationPayload = {
   organization: string;
@@ -29,7 +29,7 @@ export default function useVerification() {
     setError(null);
 
     try {
-      const data = await verifyClaim(payload);
+      const data = await verifyClaimMock(payload);
       setResult(data);
       return data;
     } catch (err) {

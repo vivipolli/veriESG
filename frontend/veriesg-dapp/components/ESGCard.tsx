@@ -1,6 +1,6 @@
 import { Sparkle, Gauge, CheckCircle2, AlertTriangle, Clock, Link2 } from "lucide-react";
 import StatusBadge from "./StatusBadge";
-import useContract from "@/hooks/useContract";
+import { useContractMock } from "@/hooks/useContractMock";
 import { useState, useEffect } from "react";
 
 type ESGCardProps = {
@@ -34,7 +34,7 @@ export default function ESGCard({
   timestamp,
   dataHash,
 }: ESGCardProps) {
-  const { getRecord, getCertificateTokenId, isReady } = useContract();
+  const { getRecord, getCertificateTokenId, isReady } = useContractMock();
   const [contractData, setContractData] = useState<{
     company?: string;
     auditor?: string;

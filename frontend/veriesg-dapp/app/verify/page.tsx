@@ -1,7 +1,6 @@
 "use client";
 
 import ESGForm from "@/components/ESGForm";
-import ContractTester from "@/components/ContractTester";
 import useVerification from "@/hooks/useVerification";
 import { Sparkles, ShieldCheck, AlertOctagon, CircleCheck, Clock } from "lucide-react";
 import StatusBadge from "@/components/StatusBadge";
@@ -33,10 +32,6 @@ export default function VerifyPage() {
           </p>
         </header>
         <ESGForm onSubmit={handleSubmit} isSubmitting={isLoading} />
-        
-        <div className="glass-panel p-6">
-          <ContractTester />
-        </div>
       </div>
 
       <aside className="glass-panel flex flex-col gap-6 p-8">
