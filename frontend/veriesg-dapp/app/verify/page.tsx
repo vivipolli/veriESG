@@ -1,8 +1,8 @@
 "use client";
 
 import ESGForm from "@/components/ESGForm";
+import ContractTester from "@/components/ContractTester";
 import useVerification from "@/hooks/useVerification";
-import { motion } from "framer-motion";
 import { Sparkles, ShieldCheck, AlertOctagon, CircleCheck, Clock } from "lucide-react";
 import StatusBadge from "@/components/StatusBadge";
 
@@ -22,12 +22,7 @@ export default function VerifyPage() {
   return (
     <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
       <div className="flex flex-col gap-8">
-        <motion.header
-          className="glass-panel flex flex-col gap-4 p-8"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-        >
+        <header className="glass-panel flex flex-col gap-4 p-8">
           <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.32em] text-[var(--color-muted)]">
             <ShieldCheck className="h-4 w-4 text-[var(--color-secondary)]" />
             Submit ESG Claim
@@ -36,16 +31,15 @@ export default function VerifyPage() {
           <p className="text-sm text-[var(--color-muted)]">
             Layer 2 ingestion validates your claim with NASA, MapBiomas, or Copernicus before minting a Layer 4 certification NFT anchored on VeChain.
           </p>
-        </motion.header>
+        </header>
         <ESGForm onSubmit={handleSubmit} isSubmitting={isLoading} />
+        
+        <div className="glass-panel p-6">
+          <ContractTester />
+        </div>
       </div>
 
-      <motion.aside
-        className="glass-panel flex flex-col gap-6 p-8"
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
-      >
+      <aside className="glass-panel flex flex-col gap-6 p-8">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-xl font-semibold text-[var(--color-foreground)]">Verification insights</h2>
@@ -107,7 +101,7 @@ export default function VerifyPage() {
             </div>
           </div>
         )}
-      </motion.aside>
+      </aside>
     </section>
   );
 }

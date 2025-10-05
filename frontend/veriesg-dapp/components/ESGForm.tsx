@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Loader2, SendHorizonal, FileSpreadsheet, Building2, BarChart3, CloudSun } from "lucide-react";
 import { useContractPrivateKey } from "@/hooks/useContractPrivateKey";
 import useWallet from "@/hooks/useWallet";
@@ -138,12 +137,9 @@ export default function ESGForm({ onSubmit, isSubmitting }: ESGFormProps) {
   };
 
   return (
-    <motion.form
+    <form
       onSubmit={handleSubmit}
       className="glass-panel flex flex-col gap-7 p-8"
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <fieldset className="flex flex-col gap-2">
@@ -229,16 +225,15 @@ export default function ESGForm({ onSubmit, isSubmitting }: ESGFormProps) {
         </fieldset>
       </div>
 
-      <motion.button
+      <button
         type="submit"
         className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-60"
         disabled={isSubmitting || isRecording}
-        whileTap={{ scale: 0.98 }}
       >
         {isSubmitting || isRecording ? <Loader2 className="h-4 w-4 animate-spin" /> : <SendHorizonal className="h-4 w-4" />}
         {isSubmitting ? "Verifying claim..." : isRecording ? "Recording on VeChain..." : "Verify and record"}
-      </motion.button>
-    </motion.form>
+      </button>
+    </form>
   );
 }
 

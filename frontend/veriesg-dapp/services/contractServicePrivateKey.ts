@@ -22,17 +22,21 @@ export class VeriESGContractServicePrivateKey {
   constructor(
     mnemonic: string,
     contractAddress: string = CONTRACT_ADDRESS,
-    rpcUrl: string = "https://testnet.vechain.org"
+    rpcUrl: string = "https://vethor-node-test.vechaindev.com"
   ) {
     this.contractAddress = contractAddress;
     this.rpcUrl = rpcUrl;
     
-    // Create wallet from mnemonic
-    this.wallet = HDNodeWallet.fromMnemonic(Mnemonic.fromPhrase(mnemonic));
+    // Create provider
+    const provider = new JsonRpcProvider(rpcUrl);
+    
+    // Create wallet from mnemonic and connect to provider
+    this.wallet = HDNodeWallet.fromMnemonic(Mnemonic.fromPhrase(mnemonic)).connect(provider);
     
     console.log('🔑 Private key wallet created:', {
       address: this.wallet.address,
-      contractAddress: this.contractAddress
+      contractAddress: this.contractAddress,
+      rpcUrl: this.rpcUrl
     });
   }
 
