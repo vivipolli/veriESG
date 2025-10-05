@@ -1,0 +1,1 @@
+import "@vechain/connex-types";
