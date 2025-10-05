@@ -193,7 +193,7 @@ export class VeriESGContractServiceDAppKit {
         dataType: result.data[1],
         auditor: result.data[2],
         timestamp: Number(result.data[3]),
-        verified: result.data[4]
+        verified: Boolean(result.data[4])
       };
     } catch (error) {
       console.error('Error fetching record:', error);
@@ -211,7 +211,7 @@ export class VeriESGContractServiceDAppKit {
         data
       }).call();
 
-      return result && result.length > 0 ? Number(result[0]) : null;
+      return result && result.data && result.data.length > 0 ? Number(result.data[0]) : null;
     } catch (error) {
       console.error('Error fetching certificate token ID:', error);
       return null;
@@ -228,7 +228,7 @@ export class VeriESGContractServiceDAppKit {
         data
       }).call();
 
-      return result && result.length > 0 ? result[0] : null;
+      return result && result.data && result.data.length > 0 ? result.data[0] : null;
     } catch (error) {
       console.error('Error fetching token URI:', error);
       return null;
@@ -245,7 +245,7 @@ export class VeriESGContractServiceDAppKit {
         data
       }).call();
 
-      return result && result.length > 0 ? Number(result[0]) : 0;
+      return result && result.data && result.data.length > 0 ? Number(result.data[0]) : 0;
     } catch (error) {
       console.error('Error fetching balance:', error);
       return 0;
@@ -262,7 +262,7 @@ export class VeriESGContractServiceDAppKit {
         data
       }).call();
 
-      return result && result.length > 0 ? result[0].map((tokenId: any) => Number(tokenId)) : [];
+      return result && result.data && result.data.length > 0 ? (Array.isArray(result.data[0]) ? result.data[0].map((tokenId: any) => Number(tokenId)) : []) : [];
     } catch (error) {
       console.error('Error fetching owner tokens:', error);
       return [];

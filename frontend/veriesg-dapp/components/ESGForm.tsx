@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Loader2, SendHorizonal, FileSpreadsheet, Building2, BarChart3, CloudSun } from "lucide-react";
-import useContract from "@/hooks/useContract";
+import { useContractPrivateKey } from "@/hooks/useContractPrivateKey";
 import useWallet from "@/hooks/useWallet";
 
 type ESGFormValues = {
@@ -33,7 +33,7 @@ export default function ESGForm({ onSubmit, isSubmitting }: ESGFormProps) {
   const [isRecording, setIsRecording] = useState(false);
   
   const { account } = useWallet();
-  const { isReady, recordDataHash } = useContract();
+  const { isReady, recordDataHash } = useContractPrivateKey();
   const isConnected = !!account;
 
   const handleChange = (key: keyof ESGFormValues) =>

@@ -16,6 +16,7 @@
     "@vechain/sdk-network": "^2.0.5",
     "@vechain/vechain-kit": "^1.8.2",
     "axios": "^1",
+    "crypto": "^1.0.1",
     "ethers": "^6.15.0",
     "framer-motion": "^12.23.22",
     "lucide-react": "^0.544.0",
